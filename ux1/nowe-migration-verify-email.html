@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="format-detection" content="telephone=no">
+<link href="https://fonts.googleapis.com/css?family=Barlow:100,300,400,500|Montserrat:400,500,600,700|Noto+Sans+TC:300,400,500,700&display=swap&subset=chinese-traditional" rel="stylesheet">
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+
+<!-- Custom style -->
+<link rel="stylesheet" type="text/css" href="../css/nowtvicons.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/form.css">
+<link rel="stylesheet" type="text/css" href="../css/nowid.css">
+<link rel="stylesheet" type="text/css" href="../css/responsive.css">
+
+<title>Verification | Now TV</title>
+</head>
+
+<body>
+
+  <div class="content-wrapper ">
+     <!-- header -->
+  <header class="navigation is-visible" data-nav-status="toggle">
+    <div class="nav-left">
+      <!-- <a href="#" class="goback"> <i class="icon-now-arrow-left"></i> </a> -->
+    </div>
+    <div class="nav-center">
+      <a href="javascript:void(0);" class="now-logo"><span></span></a>
+    </div>
+
+    <div class="nav-right">
+      <a href="javascript:void(0);" class="lang-button buttons onlylanguage tc">中文</a>
+    </div>
+  </header>
+  <!-- end of header -->
+
+  <div class="main-content">
+
+    <div class="container">
+      <div class="pageHeading">
+        <h2 class="text-28 now_buffer_lg">Please Verify...</h2>
+        <p class="text-18 Barlow">We’ve sent you a one-time passcode 
+            to your email <b class="your-email"></b><br>The passcode will be expire on 15 mins.</p>
+      </div>
+    </div>
+
+    <div class="container revisedpadding">
+      <div class="nowid_container">
+        <div class="heading-message">
+          <p class="text-18">Please input it below:</p>
+        </div>
+
+        <div class="otp-wrapper now_buffer_lg show">
+          <div class="code-wrapper" id="otp-inputs">
+            <input class="" type="text" placeholder="" pattern="\d*" inputmode="numeric" autocomplete="one-time-code">
+            <input class="" type="text" placeholder="" pattern="\d*" inputmode="numeric">
+            <input class="" type="text" placeholder="" pattern="\d*" inputmode="numeric">
+            <input class="" type="text" placeholder="" pattern="\d*" inputmode="numeric">
+            <input class="" type="text" placeholder="" pattern="\d*" inputmode="numeric">
+            <input class="" type="text" placeholder="" pattern="\d*" inputmode="numeric">
+          </div>
+          <p class="text-16 errormsg text-center" id="otp-error"> The passcode you entered is incorrect.</p>
+        </div>
+
+        <button type="button" class="standardbtn_xl center otp-btn disabled-btn" id="getOTP_btn">Get One-time Passcode</button>
+
+      </div>
+    </div>
+  </div>
+
+  </div>
+ 
+
+  <div class="loading-wrapper">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Bootstrap JS -->
+  <!-- script  -->
+  <script type="text/javascript" src="../js/jquery-3.6.4.min.js"></script>
+  <script src='../js/jquery.cookie.min-1.4.1.js'></script>
+  <script type="text/javascript" src="../js/navigation.js"></script>
+  <script type="text/javascript" src="../js/script.js"></script>
+  <script type="text/javascript" src="../js/otp-input.js"></script>
+  <script>
+    var yremail = $.cookie("nowe-email")
+    $('.your-email').text(yremail)
+
+    // nowe migration
+    var count = 120;
+    var countdownSpan = $('#getOTP_btn');
+    countdownSpan.text('Sent. Expires in ' + count + ' seconds...');
+    // countdownSpan.text('短訊已發送並將於' + count + '秒後逾時失效...');
+
+    $('.otp-wrapper').fadeIn();
+    $('#submit-OTP').show();
+    $("#otp-inputs input").first().focus();
+    timer = setInterval(function () {
+        count--;
+        countdownSpan.text('Sent. Expires in ' + count + ' seconds...');
+        // countdownSpan.text('短訊已發送並將於' + count + '秒後逾時失效...');
+
+        if (count < 0) {
+        clearInterval(timer);
+        countdownSpan.text('Resend One-Time Pass Code');
+        $('#getOTP_btn').removeClass('disabled-btn').addClass('standardbtn');
+        }
+    }, 1000);
+
+
+
+$('.code-wrapper input').on('keyup', function () {
+  checkOTPFields();
+});
+
+
+function checkOTPFields(){
+  var allInputsFilled = true;
+  var codeValue = '';
+
+  // Check if all inputs are filled and concatenate the values
+  $('.code-wrapper input').each(function () {
+    if ($(this).val() === '') {
+      allInputsFilled = false;
+      return false; // Exit the loop early
+    }
+    codeValue += $(this).val();
+    
+  });
+
+  if (allInputsFilled) {
+    $('#submit-OTP').removeAttr("disabled");
+    $('.loading-wrapper').addClass('show');
+    $('.code-wrapper input').blur()
+
+    setTimeout(function(){
+      if (codeValue === '000000') {
+        $('.loading-wrapper').removeClass('show');
+          $('#otp-error').show();
+      }
+      // else if (codeValue === '000000') {
+      //   $('#otp-error').hide();
+      //   window.location.href = 'nowid-assign-password-free.html';
+      // } else {
+      //   $('.loading-wrapper').removeClass('show');
+      //   $('#otp-error').show();
+      // }
+      else {
+        window.location = 'nowe-migration-create-acct-pwd.html';
+      }
+
+    },2000);  
+  } 
+  else {
+    $('#submit-OTP').attr("disabled", "disabled");
+  }
+}
+
+
+
+
+  </script>
+
+
+  <!-- end of script -->
+</body>
+
+</html>

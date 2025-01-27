@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="format-detection" content="telephone=no">
+  <link href="https://fonts.googleapis.com/css?family=Barlow:100,300,400,500|Montserrat:400,500,600,700|Noto+Sans+TC:300,400,500,700&display=swap&subset=chinese-traditional" rel="stylesheet">
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+
+  <!-- Custom style -->
+  <link rel="stylesheet" type="text/css" href="../css/nowtvicons.css?v=1.0">
+  <link rel="stylesheet" type="text/css" href="../css/style.css?v=1.0">
+  <link rel="stylesheet" type="text/css" href="../css/form.css?v=1.0">
+  <link rel="stylesheet" type="text/css" href="../css/responsive.css?v=1.0">
+  <link rel="stylesheet" type="text/css" href="../css/nowid.css?v=1.0">
+  <title>Now ID</title>
+</head>
+
+<body class="">
+  <!-- header -->
+  <header class="navigation is-visible" data-nav-status="toggle">
+    <div class="nav-left">
+      <!-- <a href="#" class="goback"> <i class="icon-now-arrow-left"></i> </a> -->
+    </div>
+    <div class="nav-center">
+      <a href="#" class="now-logo"><span></span></a>
+    </div>
+
+    <div class="nav-right">
+      <!-- <a href="javascript:void(0);" class="lang-button buttons onlylanguage tc">中文</a> -->
+    </div>
+  </header>
+
+  <!-- end of header -->
+
+  
+
+  <!-- content -->
+  <div class="main-content">
+
+    <div class="progressbar-wrapper">
+      <ul class="progressbar clearfix">
+        <li class=" text-16">Create Account</li>
+        <li class="active text-16">Get Your Details</li>
+        <li class="text-16">Complete Migration</li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="pageHeading">
+        <h2 class="text-28 now_buffer_lg">Complete Your Profile</h2>
+      </div>
+    </div>
+
+    <div class="data-box">
+      <h3 class="text-18">Your Login (Now ID):</h3>
+      <b class="text-20 your-email"></b>
+      <p class="text-18 secondary-color">Use this to login into all platforms.<br>This is also your contact Email.</p>
+    </div>
+
+
+    <div class="container revisedpadding">
+        <div class="nowid_container">
+
+          <div class="heading-message">
+            <p class="text-18">We need a few more details.</p>
+          </div>
+
+          <form class="" action="" method="post">
+
+            <div class="group now_buffer_lg">
+                <input type="text" value="" name="" class="text-20" required="" autocomplete="off">
+                <span class="highlight text-16"></span>
+                <span class="bar"></span>
+                <label class="text-18">First Name*</label>
+            </div>
+
+            <div class="group now_buffer_lg">
+                <input type="text" value="" name="" class="text-20" required="" autocomplete="off">
+                <span class="highlight text-16"></span>
+                <span class="bar"></span>
+                <label class="text-18">Last Name*</label>
+            </div>
+
+            <div class="group now_buffer_lg">
+                <input type="number" value="" name="mobile-no" class="text-20" required="" autocomplete="off">
+                <span class="highlight text-16"></span>
+                <span class="bar"></span>
+                <label class="text-18">Mobile*</label>
+            </div>
+
+            <div class="OTP-button-wrap">
+              <button type="button" name="" class="mb-30 default-btn full" disabled  id="getOTP_btn">Get One-Time Pass Code </button>
+            </div>
+
+            <div class="group now_buffer_lg one-time-passcode-wrapper">
+                <input type="number" value="" name="" class="text-20" required="" autocomplete="off">
+                <span class="highlight text-16"></span>
+                <span class="bar"></span>
+                <label class="text-18">One Time Passcode</label>
+            </div>
+
+            <div class="radiogroup ">
+              <label class="text-16">
+                <input type="checkbox" class="option-input radio" name="example" />
+              </label>
+              <p class="terms text-16 secondary-color">Please keep me informed of special offers. See <a href="#">Personal Information Collection Statement</a>.</p>
+            </div>
+
+            <div class="radiogroup ">
+                <label class="text-16">
+                  <input type="checkbox" class="option-input radio" name="example" />
+                </label>
+                <p class="terms text-16 secondary-color">The Club PICS ?????</p>
+              </div>
+
+            <br>
+            <div class="page_option">
+              <button type="button" name="" class="mb-30 standardbtn_lg" disabled  id="continue-btn"  onclick="location.href='nowe-migration-almost-there.html'">Continue</button>
+            </div>
+
+          </form>
+
+        </div>
+    </div>
+  </div>
+  <!-- end of content -->
+
+  <!-- Optional JavaScript -->
+
+  <!-- script  -->
+  <script type="text/javascript" src="../js/jquery-3.6.4.min.js"></script>
+  <script src='../js/jquery.cookie.min-1.4.1.js'></script>
+  <script type="text/javascript" src="../js/script.js"></script>
+  <script>
+    function checkInputs() {
+      var allInputsFilled = $('input[type="text"], input[type="number"]').filter(function () {
+          return $(this).val().trim() === '';
+      }).length === 0;
+
+
+      var allCheckboxesChecked = $('input[type="checkbox"]').filter(function () {
+          return !$(this).is(':checked');
+      }).length === 0;
+
+      if (allInputsFilled && allCheckboxesChecked) {
+          $('#continue-btn').removeAttr("disabled");
+          $('#continue-btn').removeClass("outline").addClass("primary");
+      } else {
+          $('#continue-btn').attr("disabled", "disabled");
+          $('#continue-btn').removeClass("primary").addClass("outline");
+      }
+    }
+
+    $(document).ready(function () {
+      var yremail = $.cookie("nowe-email")
+      $('.your-email').text(yremail)
+
+      $('input').on('input', checkInputs);
+      $('input[type="checkbox"]').on('change', checkInputs);
+    });
+
+  </script>
+  <!-- end of script -->
+
+</body>
+
+</html>
