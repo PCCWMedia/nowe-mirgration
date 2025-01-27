@@ -1,0 +1,726 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+body.overflow {
+  overflow: hidden;
+}
+
+.body-image {
+  width: 100%;
+  height: auto;
+}
+.body-image img {
+  width: 100%;
+  height: auto;
+}
+
+header {
+  background-color: #33058D;
+  text-align: center;
+  padding: 10px 0;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 1s ease;
+}
+header img {
+  width: auto;
+  height: 40px;
+  transition: all 1s ease;
+}
+
+.migration-overlay-wrapper {
+  display: none;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100vh;
+  padding: 16px;
+}
+.migration-overlay-wrapper.show {
+  display: flex;
+}
+.migration-overlay-wrapper .box {
+  position: relative;
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.migration-overlay-wrapper .box .content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  text-align: center;
+}
+.migration-overlay-wrapper .box .content h2 {
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  margin: 0;
+  font-weight: 600;
+  font-size: 28px;
+  text-wrap: pretty;
+  color: #33058d;
+}
+.migration-overlay-wrapper .box .content .img-row {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -moz-column-gap: 16px;
+       column-gap: 16px;
+}
+.migration-overlay-wrapper .box .content .img-row img.arrow {
+  height: 36px;
+}
+.migration-overlay-wrapper .box .content .img-row img.logo {
+  height: 55px;
+}
+.migration-overlay-wrapper .box .content .message p {
+  text-align: left;
+  font-family: "Barlow", "Noto Sans TC", sans-serif;
+  font-size: 18px;
+  color: #4D5154;
+  text-wrap: pretty;
+  margin: 0 0 16px 0;
+  font-weight: 400;
+}
+.migration-overlay-wrapper .box .content .message p:last-child {
+  margin: 0;
+}
+.migration-overlay-wrapper .box .content .bottom-cta {
+  display: flex;
+  flex-direction: column;
+}
+.migration-overlay-wrapper .box .content .bottom-cta a, .migration-overlay-wrapper .box .content .bottom-cta button {
+  cursor: pointer;
+  align-self: center;
+  margin: 0 0 16px 0;
+}
+.migration-overlay-wrapper .box .content .bottom-cta a:last-child, .migration-overlay-wrapper .box .content .bottom-cta button:last-child {
+  margin: 0;
+}
+.migration-overlay-wrapper .box .content .bottom-cta a.btn, .migration-overlay-wrapper .box .content .bottom-cta button.btn {
+  border: 0;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: center;
+  text-decoration: none;
+  justify-content: center;
+  padding: 12px 44px;
+  border-radius: 100px;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  background-color: #33058d;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+.migration-overlay-wrapper .box .content .bottom-cta a.btn:hover, .migration-overlay-wrapper .box .content .bottom-cta button.btn:hover {
+  background-color: #572daa;
+}
+.migration-overlay-wrapper .box .content .bottom-cta a.text-btn, .migration-overlay-wrapper .box .content .bottom-cta button.text-btn {
+  color: #6C2BEE;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  font-family: "Barlow", "Noto Sans TC", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+.migration-overlay-wrapper .box .page-img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.migration-overlay-wrapper .box::before {
+  content: "";
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  position: absolute;
+  background: linear-gradient(180deg, #FFF 0%, rgba(255, 255, 255, 0) 38.93%, rgba(255, 255, 255, 0) 58.54%, #FFF 93.41%), linear-gradient(94deg, rgba(108, 43, 238, 0.15) 4.87%, rgba(239, 149, 40, 0.15) 82.84%);
+}
+
+.nowe-information-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  padding: 48px 30px 30px 48px;
+}
+.nowe-information-wrapper.withbg::before {
+  content: "";
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  position: absolute;
+  background: linear-gradient(180deg, #FFF 0%, rgba(255, 255, 255, 0) 38.93%, rgba(255, 255, 255, 0) 58.54%, #FFF 93.41%), linear-gradient(94deg, rgba(108, 43, 238, 0.15) 4.87%, rgba(239, 149, 40, 0.15) 82.84%);
+}
+.nowe-information-wrapper .content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  row-gap: 30px;
+}
+.nowe-information-wrapper .img-row {
+  padding: 5px 0;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  -moz-column-gap: 16px;
+       column-gap: 16px;
+}
+.nowe-information-wrapper .img-row img.arrow {
+  height: 36px;
+}
+.nowe-information-wrapper .img-row img.logo {
+  height: 55px;
+}
+.nowe-information-wrapper h2 {
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  font-size: 24px;
+  margin: 0;
+  color: #4D5154;
+  text-wrap: pretty;
+}
+.nowe-information-wrapper ul {
+  margin: 0;
+  padding: 0;
+}
+.nowe-information-wrapper ul li {
+  text-align: left;
+  font-family: "Barlow", "Noto Sans TC", sans-serif;
+  font-size: 18px;
+  color: #4D5154;
+  margin: 0 0 8px 0;
+}
+.nowe-information-wrapper ul li:last-child {
+  margin: 0;
+}
+.nowe-information-wrapper p {
+  margin: 0;
+  color: #4D5154;
+  font-size: 18px;
+  font-family: "Barlow", "Noto Sans TC", sans-serif;
+  text-wrap: pretty;
+}
+.nowe-information-wrapper .cta-button {
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+}
+.nowe-information-wrapper .cta-button button {
+  cursor: pointer;
+  align-self: center;
+}
+.nowe-information-wrapper .cta-button .btn {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  display: inline-flex;
+  min-height: 45px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 40px;
+  border-radius: 30px !important;
+  font-size: 18px !important;
+  font-weight: 500;
+  line-height: 1;
+  transition: all 0.5s ease;
+  text-decoration: none;
+  color: white;
+  background-color: #EF9528;
+}
+.nowe-information-wrapper .cta-button .btn:hover {
+  background-color: #F37D16;
+}
+.nowe-information-wrapper .cta-button .text-link {
+  display: inline-flex;
+  align-items: center;
+  color: #6C2BEE;
+  font-family: "Barlow", "Noto Sans TC", sans-serif;
+  font-size: 16px;
+  border: 0;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+.nowe-information-wrapper .cta-button .text-link img {
+  margin: 0 5px 0 0;
+}
+
+.login-wrapper {
+  width: 100%;
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.login-wrapper .form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 22px;
+  width: 100%;
+  margin: 80px auto;
+  text-align: center;
+}
+.login-wrapper .logo {
+  width: 260px;
+  height: auto;
+  margin: 0 auto 40px auto;
+}
+.login-wrapper h2 {
+  font-size: 26px;
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  font-weight: 400;
+  color: #4D5154;
+}
+.login-wrapper b.your-email {
+  display: block;
+  margin: 40px 0 30px 0;
+  font-family: "Barlow", "Noto Sans TC", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+}
+.login-wrapper h4 {
+  font-family: "Barlow", "Noto Sans TC", sans-serif;
+  color: #4D5154;
+  font-size: 18px;
+  font-weight: 400;
+}
+.login-wrapper .or {
+  margin: 40px 0;
+  font-family: "Barlow", "Noto Sans TC", sans-serif;
+  font-size: 16px;
+  color: #4D5154;
+}
+.login-wrapper p {
+  font-family: "Barlow", "Noto Sans TC", sans-serif;
+  color: #929292;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.login-wrapper .link {
+  display: inline-block;
+  font-family: "Barlow", "Noto Sans TC", sans-serif;
+  margin: 40px 0;
+  text-decoration: none;
+  font-size: 16px;
+}
+.login-wrapper .link.nowe {
+  color: #6C2BEE;
+}
+.login-wrapper .footnote {
+  line-height: 1.5;
+  font-family: "Barlow", "Noto Sans TC", sans-serif;
+  color: #4d5154;
+  font-size: 14px;
+  text-align: center;
+}
+.login-wrapper .footnote a {
+  color: #6C2BEE;
+  text-decoration: none;
+}
+
+.form-floating-label {
+  position: relative;
+}
+
+.form-floating-label [type=text],
+.form-floating-label [type=password],
+.form-floating-label [type=date],
+.form-floating-label [type=datetime],
+.form-floating-label [type=datetime-local],
+.form-floating-label [type=month],
+.form-floating-label [type=week],
+.form-floating-label [type=email],
+.form-floating-label [type=number],
+.form-floating-label [type=search],
+.form-floating-label [type=tel],
+.form-floating-label [type=time],
+.form-floating-label [type=url],
+.form-floating-label [type=color],
+.form-floating-label textarea {
+  margin-bottom: 0;
+  color: #8a8a8a;
+  font-size: 18px;
+  font-weight: 300;
+  padding: 30px 1rem 0 1rem;
+}
+
+.form-floating-label label {
+  /*color: #cacaca*/
+  color: #999999;
+  font-size: 18px;
+  position: absolute;
+  pointer-events: none;
+  left: 0;
+  bottom: 0;
+  transition: all 0.2s ease-in;
+  font-family: "Barlow", "Noto Sans TC", sans-serif;
+  width: 100%;
+  text-align: center;
+  /*text-transform:uppercase*/
+  top: 25px;
+}
+
+.form-floating-label textarea ~ label {
+  top: 20px;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.form-floating-label input:focus ~ label,
+.form-floating-label input:disabled[value] ~ label,
+.form-floating-label.has-value input ~ label {
+  top: 0;
+  font-size: 13px;
+  color: #6C2BEE;
+  font-weight: 500;
+  text-align: left;
+  margin-left: 1rem;
+}
+
+.form-floating-label textarea:focus ~ label,
+.form-floating-label.has-value textarea ~ label {
+  top: 0;
+  font-size: 13px;
+  color: #4d5154;
+  font-weight: 500;
+  text-align: left;
+  margin-left: 1rem;
+}
+
+form {
+  width: 100%;
+  margin: 4em auto;
+}
+
+.group {
+  position: relative;
+  /*margin-bottom: 45px;*/
+  margin-bottom: 45px;
+}
+
+input {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  -webkit-appearance: none;
+  display: block;
+  color: #636363;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #94A0AE;
+  text-align: center;
+  font-family: "Barlow", "Noto Sans TC", sans-serif;
+}
+
+input:focus {
+  outline: none;
+}
+
+.error {
+  display: none;
+  font-family: "Barlow", "Noto Sans TC", sans-serif;
+  color: #D0021B !important;
+  font-size: 13px !important;
+  margin: 6px 0;
+}
+
+/* Label */
+.field-input label {
+  color: #999;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: all 0.5s ease;
+}
+
+/* active */
+.field-input input:focus ~ label, .field-input input.used ~ label {
+  top: -10px;
+  transform: scale(0.75);
+  left: -40px;
+  /* font-size: 14px; */
+  color: #94A0AE;
+  text-align: left;
+}
+
+.btn {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  font-size: 18px;
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  padding: 10px 30px;
+  border-radius: 30px;
+  min-height: 54px;
+  align-self: center;
+  transition: all 0.15s ease;
+}
+.btn.full-width {
+  width: 100%;
+}
+.btn.e-primary {
+  background-color: #33058d;
+  color: #fff;
+  min-width: 200px;
+}
+.btn.e-primary:hover {
+  background-color: #572daa;
+}
+.btn.outline-btn {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 12px;
+       column-gap: 12px;
+  justify-content: center;
+  width: 100%;
+  border: 1px solid #ccc;
+}
+.btn.outline-btn.csl img {
+  width: auto;
+  height: 30px;
+}
+
+.exp {
+  display: table;
+  width: 100%;
+  height: 100%;
+  margin: 0 0 30px 0;
+}
+
+.exp .checkbox {
+  display: table-cell;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.exp label {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+}
+
+.exp .tandc-m {
+  float: left;
+  text-align: left;
+  width: 90%;
+  font-size: 16px;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.exp .tandc-m small {
+  font-size: 12px;
+}
+
+.exp label span {
+  float: left;
+  display: inline-block;
+  position: relative;
+  background-color: transparent;
+  width: 25px;
+  height: 25px;
+  transform-origin: center;
+  border: 2px solid #4D5154;
+  border-radius: 50%;
+  vertical-align: -6px;
+  margin-right: 10px;
+  transition: background-color 150ms 200ms, transform 350ms cubic-bezier(0.78, -1.22, 0.17, 1.89);
+}
+
+.exp label span:before {
+  content: "";
+  width: 0px;
+  height: 2px;
+  border-radius: 2px;
+  background: #fff;
+  position: absolute;
+  transform: rotate(45deg);
+  top: 11px;
+  left: 7px;
+  transition: width 50ms ease 50ms;
+  transform-origin: 0% 0%;
+}
+
+.exp label span:after {
+  content: "";
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: #fff;
+  position: absolute;
+  transform: rotate(305deg);
+  top: 14px;
+  left: 8px;
+  transition: width 50ms ease;
+  transform-origin: 0% 0%;
+}
+
+.exp label:hover span:before {
+  width: 5px;
+  transition: width 100ms ease;
+}
+
+.exp label:hover span:after {
+  width: 10px;
+  transition: width 150ms ease 100ms;
+}
+
+.exp input[type=checkbox] {
+  display: none;
+}
+
+.exp input[type=checkbox]:checked + label span {
+  background-color: #33058D;
+  transform: scale(1.25);
+}
+
+.exp input[type=checkbox]:checked + label span:after {
+  width: 10px;
+  background: #fff;
+  transition: width 150ms ease 100ms;
+}
+
+.exp input[type=checkbox]:checked + label span:before {
+  width: 5px;
+  background: #fff;
+  transition: width 150ms ease 100ms;
+}
+
+.exp input[type=checkbox]:checked + label:hover span {
+  background-color: #33058D;
+  transform: scale(1.25);
+}
+
+.exp input[type=checkbox]:checked + label:hover span:after {
+  width: 10px;
+  background: #fff;
+  transition: width 150ms ease 100ms;
+}
+
+.exp input[type=checkbox]:checked + label:hover span:before {
+  width: 5px;
+  background: #fff;
+  transition: width 150ms ease 100ms;
+}
+
+@media screen and (max-width: 720px) {
+  header {
+    height: 50px;
+  }
+  header img {
+    height: 30px;
+  }
+  .migration-overlay-wrapper .box {
+    padding: 24px;
+  }
+  .migration-overlay-wrapper .box .content {
+    row-gap: 24px;
+  }
+  .migration-overlay-wrapper .box .content h2 {
+    font-size: 24px;
+  }
+  .migration-overlay-wrapper .box .content .img-row img.arrow {
+    height: 32px;
+  }
+  .migration-overlay-wrapper .box .content .img-row img.logo {
+    height: 50px;
+  }
+  .migration-overlay-wrapper .box .content .message p {
+    text-align: center;
+    font-size: 16px;
+  }
+  .migration-overlay-wrapper .box .content .bottom-cta button {
+    align-self: center;
+    margin: 0 0 16px 0;
+  }
+  .migration-overlay-wrapper .box .content .bottom-cta button:last-child {
+    margin: 0;
+  }
+  .migration-overlay-wrapper .box .content .bottom-cta button.btn {
+    font-size: 16px;
+  }
+  .migration-overlay-wrapper .box .content .bottom-cta button.text-btn {
+    font-size: 16px;
+  }
+  .nowe-information-wrapper {
+    padding: 40px 24px 24px 40px;
+    row-gap: 24px;
+  }
+  .nowe-information-wrapper .img-row {
+    -moz-column-gap: 16px;
+         column-gap: 16px;
+  }
+  .nowe-information-wrapper .img-row img.arrow {
+    height: 32px;
+  }
+  .nowe-information-wrapper .img-row img.logo {
+    height: 50px;
+  }
+  .nowe-information-wrapper h2 {
+    font-size: 20px;
+  }
+  .nowe-information-wrapper ul {
+    width: 100%;
+    padding: 0 0 0 15px;
+  }
+  .nowe-information-wrapper ul li {
+    font-size: 16px;
+    margin: 0 0 6px 0;
+  }
+  .nowe-information-wrapper p {
+    text-align: left;
+    font-size: 16px;
+    width: 100%;
+  }
+  .nowe-information-wrapper .cta-button {
+    row-gap: 50px;
+  }
+  .nowe-information-wrapper .cta-button .btn {
+    font-size: 16px !important;
+  }
+  .nowe-information-wrapper .cta-button .btn:hover {
+    background-color: #F37D16;
+  }
+}/*# sourceMappingURL=migration.css.map */

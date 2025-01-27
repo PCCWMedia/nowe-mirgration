@@ -1,0 +1,303 @@
+.navigation {
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 73px;
+  background-color: white;
+  box-shadow: 0 1px 4px 0 #ABABAB;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transition: top 0.5s ease-in-out;
+}
+
+.nav-up {
+  top: -100px;
+}
+
+/*.navigation.is-hidden {
+    opacity: 0;
+    -webkit-transform: translate(0, -60px);
+    -webkit-transition: -webkit-transform .2s, background .3s, color .3s, opacity 0 .3s; }
+  .navigation.is-visible {
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+    -webkit-transition: -webkit-transform .2s, background .3s, color .3s; }*/
+.navigation .now-logo {
+  margin-left: 18px;
+  height: 51px;
+  width: auto;
+  margin-right: 20px;
+}
+
+.navigation .nav-left{
+  flex: 1;          /* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.navigation .nav-left .goback{
+  color: #0b0b0b;
+  font-size: 14px;
+  position: relative;
+  top: 3px;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 22px;
+}
+
+.navigation .nav-center{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navigation .nav-center .now-logo span:after{
+  content: "";
+  background-image:url('../img/logo.png');
+  background-size: contain;
+  display: inline-block;
+  /*size of your image*/
+  width:90px;
+  height: 51px;
+  background-repeat: no-repeat;
+}
+
+.navigation .nav-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navigation .nav-item-list {
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  flex-direction: row;
+  align-items: center;
+}
+
+.navigation .nav-item {
+  position: relative;
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 161px;
+  height: 73px;
+  color: #0B0B0B;
+  font-family: Montserrat;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 2.2rem;
+  text-decoration: none;
+}
+
+.navigation .nav-item.active {
+  color: #CF6B0D;
+  font-weight: bold;
+}
+
+.navigation .nav-item.active .highlight {
+  display: block;
+}
+
+.navigation .nav-item .highlight {
+  position: absolute;
+  top: auto;
+  opacity: 1;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #CF6B0D;
+  display: none;
+}
+
+.navigation .nav-button {
+  width: 40px;
+  height: 40px;
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+.navigation .nav-button img {
+  margin-right: 20px;
+}
+
+.navigation .buttons {
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #0b0b0b;
+  font-family: Montserrat;
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  width: 133px;
+  height: 73px;
+  text-decoration: none;
+}
+
+.navigation .search-button {
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.navigation .watch-button {
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  /*width: 175px;*/
+  height: 73px;
+  background-color: #f7f7f7;
+  font-family: Montserrat;
+  color: #0b0b0b;
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  text-decoration: none;
+}
+
+.navigation .login-button {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #EF9528;
+  color: white;
+  border: none;
+  text-decoration: none;
+  font-family: Montserrat;
+}
+
+.navigation .login-button:hover {
+  background-color: #F37D16;
+  color: white;
+}
+
+.navigation .login-button:active, .navigation .login-button.active {
+  background-color: #DB6804;
+  color: white;
+}
+
+.navigation .login-button.disabled, .navigation .login-button.disabled:hover {
+  background-color: #FDC794;
+  cursor: not-allowed;
+}
+
+.navigation .profile-button {
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  flex-direction: row;
+  align-items: center;
+  font-family: Montserrat;
+  width: 100%;
+  min-width: 175px;
+  max-width: 226px;
+  padding: 25px 20px;
+  background-color: #EF9528;
+  color: white;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.navigation .profile-button img {
+  margin-right: 20px;
+}
