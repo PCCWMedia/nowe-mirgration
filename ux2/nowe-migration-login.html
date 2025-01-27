@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="format-detection" content="telephone=no">
+<link href="https://fonts.googleapis.com/css?family=Barlow:100,300,400,500|Montserrat:400,500,600,700|Noto+Sans+TC:300,400,500,700&display=swap&subset=chinese-traditional" rel="stylesheet">
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+
+<!-- Custom style -->
+<link rel="stylesheet" type="text/css" href="../css/nowtvicons.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/form.css">
+<link rel="stylesheet" type="text/css" href="../css/nowid.css">
+<link rel="stylesheet" type="text/css" href="../css/responsive.css">
+
+<title>Now ID</title>
+</head>
+
+<body class="">
+  <div class="content-wrapper ">
+  <!-- header -->
+  <header class="navigation is-visible" data-nav-status="toggle">
+    <div class="nav-left">
+      <!-- <a href="#" class="goback"> <i class="icon-now-arrow-left"></i> </a> -->
+    </div>
+    <div class="nav-center">
+      <a href="login.html" class="now-logo"><span></span></a>
+    </div>
+  
+    <div class="nav-right">
+      <a href="javascript:void(0);" class="lang-button buttons onlylanguage tc">中文</a>
+    </div>
+  </header>
+  
+  <!-- end of header -->
+
+    <div class="main-content">
+
+        <div class="container">
+            <div class="pageHeading">
+                <h2 class="text-28 now_buffer_lg">Login</h2>
+                <p class="Barlow text-18">Please login to your Now TV Account to continue the process</p>
+            </div>
+          </div>
+
+        <div class="data-box">
+            <h3 class="text-18">Your Login (Now ID):</h3>
+            <b class="text-20 your-email"></b>
+          </div>
+
+      <div class="container revisedpadding">
+        <div class="nowid_container">
+
+          <div class="group now_buffer_lg">
+            <input type="password" value="" name="" class="text-20 password-input" required="" autocomplete="off" id="">
+            <span class="highlight text-16"></span>
+            <span class="bar"></span>
+            <label class="text-18">Password</label>
+            <button type="button" name="viewpw" class="viewpw-btn">
+              <img src="../img/viewcloseicon.png" alt="" id="">
+            </button>
+            <!-- <p class="text-16 errormsg">Password does not match. Please re-enter.</p> -->
+            <p class="forgotpw-link "><a href="#" class="text-16 darkgrey-link">Forgot Password?</a></p>
+          </div>
+
+          <div class="submit_option">
+            <button type="submit" name="login-submit" class="standardbtn center" disabled formnovalidate onclick="location.href='nowe-migration-almost-there.html'">Login</button>
+          </div>
+
+          <div class="title-url">
+            <h4>Want to setup a new one?</h4>
+            <a href="nowe-migration-create-acct-pwd.html" class="arrowlink text-18">Create account</a>
+          </div>
+          
+
+          <p class="text-16 Barlow text-center mt-60 subtext">This site is protected by reCAPTCHA and the Google  <a href="https://policies.google.com/privacy" class="linkU" target="_blank" >Privacy Policy</a> and  <a href="https://policies.google.com/terms" class="linkU" target="_blank">Terms of Service</a> apply.</p>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- End of Main Content Section -->
+ 
+
+
+  <div class="loading-wrapper">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Bootstrap JS -->
+  <!-- script  -->
+  <script type="text/javascript" src="../js/jquery-3.6.4.min.js"></script>
+  <script src='../js/jquery.cookie.min-1.4.1.js'></script>
+  <script type="text/javascript" src="../js/navigation.js"></script>
+  <script type="text/javascript" src="../js/script.js"></script>
+
+
+<script>
+  var yremail = $.cookie("nowe-email")
+  $('.your-email').text(yremail)
+
+
+  $('.password-input').on('input', function () {
+    if ($(this).val().trim() !== '') {
+        $('button[name="login-submit"]').removeAttr("disabled");
+    } else {
+        $('button[name="login-submit"]').attr("disabled", "disabled");
+    }
+  });
+
+  $('.password-input').keyup(function(event) {
+    if (event.keyCode === 13 && !$('button[name="login-submit"]').prop('disabled')) {
+      window.location = 'nowe-migration-almost-there.html';
+   }
+ });
+
+
+</script>
+
+
+  <!-- end of script -->
+</body>
+
+</html>
