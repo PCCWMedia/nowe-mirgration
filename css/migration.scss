@@ -62,6 +62,47 @@ header{
     }
 }
 
+.nowe-migration-home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 20px;
+    h1{
+        text-align: center;
+        font-size: 48px;
+        font-family: $montserrat;
+        color: #0b0b0b;
+    }
+    .img-row{
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 16px;
+        img.arrow{
+            height: 36px;
+        }
+        img.logo{
+            height: 55px;
+        }
+    }
+    a{
+        display: inline-block;
+        background-color: #f8f8f8;
+        border:1px solid #d8d8d8;
+        font-family: $barlow;
+        color: #4a4a4a;
+        align-self: center;
+        min-width: 500px;
+        text-align: center;
+        font-size: 16px;
+        margin: 20px 0 0 0;
+        padding: 20px 40px;
+        text-decoration: none;
+        border-radius: 30px;
+    }
+}
+
 
 
 .migration-overlay-wrapper{
