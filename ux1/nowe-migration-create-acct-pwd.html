@@ -119,10 +119,16 @@
 
           <div class="radiogroup ">
             <label class="text-16">
-              <input type="checkbox" class="option-input radio" name="example" />
+              <input type="checkbox" class="option-input radio" name="tnc" id="tnc-01"/>
             </label>
-            <p class="terms text-16 secondary-color">(T&C Placeholder) Ipsum lorem maximum length allowed is two lines
-              with link to pop up for more. </p>
+            <p class="terms text-16 secondary-color">I have read and accepted the <a href="https://www.nowtv.now.com/terms-and-conditions/" target="_blank">Now TV Terms and Conditions</a>, the <a href="https://www.nowtv.now.com/terms-and-conditions/" target="_blank">Now TV Service Guide</a>, the <a href="https://nowplayer.now.com/setting-sn-termsnconditions-npa" target="_blank">Now TV App Terms and Conditions</a>, and <a href="https://www.hkt.com/privacy-statement?locale=en" target="_blank">Privacy Statement</a>.</p>
+          </div>
+
+          <div class="radiogroup ">
+            <label class="text-16">
+              <input type="checkbox" class="option-input radio" name="tnc" />
+            </label>
+            <p class="terms text-16 secondary-color">I consent to the proposed use of my Data for Direct Marketing as stated in above privacy statement. (Please tick/un-tick as appropriate)</p>
           </div>
 
           <br>
@@ -151,19 +157,26 @@
       $('.your-email').text(yremail)
 
       // Function to check if both password fields have values
+      // Modify the validateFields function to include checkbox check
       function validateFields() {
-        const password1 = $('#newpw-input').val();
-        const password2 = $('#confirmpw-input').val();
-        const button = $('#continue-btn');
+          const password1 = $('#newpw-input').val();
+          const password2 = $('#confirmpw-input').val();
+          const button = $('#continue-btn');
+          const checkbox = $('#tnc-01');
 
-        if (password1 && password2) {
-          // Enable the button
-          button.removeAttr("disabled");
-        } else {
-          // Disable the button
-          button.attr("disabled", "disabled");
-        }
+          if (password1 && password2 && checkbox.is(':checked')) {
+              // Enable the button
+              button.removeAttr("disabled");
+          } else {
+              // Disable the button
+              button.attr("disabled", "disabled");
+          }
       }
+
+      // Event listener for checkbox change to call validateFields function
+      $('#tnc-01').change(function() {
+          validateFields();
+      });
 
       // Attach the `input` event to both password fields
       $('#newpw-input, #confirmpw-input').on('input', validateFields);
