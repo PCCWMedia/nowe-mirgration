@@ -61,7 +61,7 @@ $(document).ready(function() {
 
     $('#pwd-input').keyup(function(event) {
         if (event.keyCode === 13 ) {
-            window.location = 'nowe-home-upgrading.html';
+            window.location = 'nowe-information.html';
        }
     });
 

@@ -2178,6 +2178,51 @@ ul.subscribed-plan li{
   display: none;
 }
 
+.thank-you-modal{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  display: none;
+}
+.thank-you-modal.show{
+  display: flex;
+}
+
+.thank-you-modal .content-wrapper{
+  background-color: white;
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  min-height: auto;
+  align-self: center;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+}
+
+.thank-you-modal .content-wrapper h2{
+  font-size: 28px;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0 0 16px 0;
+}
+.thank-you-modal .content-wrapper p{
+  font-size: 18px;
+  font-family: "Barlow", "Noto Sans TC", sans-serif;
+  color: #4a4a4a;
+  margin: 0 0 40px 0;
+}
+body.overflow{
+  overflow: hidden;
+}
+
 
 
 /* responsive - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -2782,6 +2827,20 @@ ul.subscribed-plan li{
   .login-welcome small{
     font-size: 12px;
   }
+
+  /* nowe migration */
+  .thank-you-modal .content-wrapper{
+    padding: 22px;
+  }
+  
+  .thank-you-modal .content-wrapper h2{
+    font-size: 24px;
+  }
+  .thank-you-modal .content-wrapper p{
+    font-size: 16px;
+    margin: 0 0 30px 0;
+  }
+  
 
 }
 
