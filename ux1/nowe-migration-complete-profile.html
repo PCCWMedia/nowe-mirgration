@@ -72,7 +72,7 @@
 
     <div class="data-box">
       <h3 class="text-18">Your Login (Now ID):</h3>
-      <b class="text-20 your-email"></b>
+      <b class="text-20">useremail@email.com</b>
       <p class="text-18 secondary-color">Use this to login into all platforms.<br>This is also your contact Email.</p>
     </div>
 
@@ -164,8 +164,6 @@
     }
 
     $(document).ready(function () {
-      var yremail = $.cookie("nowe-email")
-      $('.your-email').text(yremail)
 
       $('input').on('input', checkInputs);
       $('input[type="checkbox"]').on('change', checkInputs);
