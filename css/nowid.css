@@ -1700,6 +1700,9 @@ ul.subscribed-plan li{
   display: none;
   margin: 30px 0 0 0;
 }
+.otp-wrapper .note{
+  margin: 30px 0 0 0;
+}
 
 .otp-btn-controls{text-align: center;}
 .otp-btn-controls button{
@@ -2647,9 +2650,11 @@ body.overflow{
     margin: 24px 0 0 0;
   }
 
-  .otp-wrapper .errormsg {
+  .otp-wrapper .errormsg,
+  .otp-wrapper .note{
     margin: 24px 0 0 0;
   }
+
   .other-BUs{
     margin: 40px 0 0 0;
   }
