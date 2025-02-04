@@ -18,23 +18,12 @@
 <link rel="stylesheet" type="text/css" href="../css/form.css">
 <link rel="stylesheet" type="text/css" href="../css/nowid.css">
 <link rel="stylesheet" type="text/css" href="../css/responsive.css">
+<style>
+  .errormsg{display: none;}
+</style>
 
 <title>Now ID</title>
-
-<!-- Hotjar Tracking Code for NowE Mirgration -->
-<script>
-  (function(h,o,t,j,a,r){
-      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-      h._hjSettings={hjid:5281559,hjsv:6};
-      a=o.getElementsByTagName('head')[0];
-      r=o.createElement('script');r.async=1;
-      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-      a.appendChild(r);
-  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
-
 </head>
-
 <body class="">
   <div class="content-wrapper ">
   <!-- header -->
@@ -50,47 +39,30 @@
       <a href="javascript:void(0);" class="lang-button buttons onlylanguage tc">中文</a>
     </div>
   </header>
-  
   <!-- end of header -->
-
     <div class="main-content">
-
-        <div class="container">
-            <div class="pageHeading">
-                <h2 class="text-28 now_buffer_lg">Login</h2>
-                <p class="Barlow text-18">Please login to your Now TV Account to continue the process</p>
-            </div>
-          </div>
-
-        <div class="data-box">
-            <h3 class="text-18">Your Login (Now ID):</h3>
-            <b class="text-20">useremail@email.com</b>
-          </div>
-
       <div class="container revisedpadding">
         <div class="nowid_container">
+          <div class="pageHeading">
+            <h2 class="text-28 now_buffer_lg">Setup Now ID to Continue</h2>
+            <p class="Barlow text-18">Enter your mobile number to use as your login</p>
+          </div>
 
           <div class="group now_buffer_lg">
-            <input type="password" value="" name="" class="text-20 password-input" required="" autocomplete="off" id="">
+            <input type="text" name="nowid-input" value="" class="text-20" required="" autocomplete="off">
             <span class="highlight text-16"></span>
             <span class="bar"></span>
-            <label class="text-18">Password</label>
-            <button type="button" name="viewpw" class="viewpw-btn">
-              <img src="../img/viewcloseicon.png" alt="" id="">
-            </button>
-            <!-- <p class="text-16 errormsg">Password does not match. Please re-enter.</p> -->
-            <p class="forgotpw-link "><a href="#" class="text-16 darkgrey-link">Forgot Password?</a></p>
+            <label class="text-18">Email/ Mobile</label>
+            <p class="text-16 errormsg" id="">Please enter a valid email or 8-digit mobile number</p>
           </div>
 
           <div class="submit_option">
-            <button type="submit" name="login-submit" class="standardbtn center" disabled formnovalidate onclick="location.href='nowe-migration-almost-there.html'">Login</button>
+            <button type="button" name="setup-btn" class="standardbtn center" disabled formnovalidate>Setup</button>
           </div>
 
           <div class="title-url">
-            <h4>Want to setup a new one?</h4>
-            <a href="nowe-migration-setup-nowid-continue.html" class="arrowlink text-18">Create account</a>
+            <a href="nowe-migration-login.html" class="arrowlink back text-18">Back to Login</a>
           </div>
-          
 
           <p class="text-16 Barlow text-center mt-60 subtext">This site is protected by reCAPTCHA and the Google  <a href="https://policies.google.com/privacy" class="linkU" target="_blank" >Privacy Policy</a> and  <a href="https://policies.google.com/terms" class="linkU" target="_blank">Terms of Service</a> apply.</p>
 
@@ -100,8 +72,9 @@
 
   </div>
   <!-- End of Main Content Section -->
- 
 
+
+  <!-- end of login error -->
 
   <div class="loading-wrapper">
     <div class="spinner-border" role="status">
@@ -114,30 +87,53 @@
   <!-- jQuery first, then Bootstrap JS -->
   <!-- script  -->
   <script type="text/javascript" src="../js/jquery-3.6.4.min.js"></script>
-  <script src='../js/jquery.cookie.min-1.4.1.js'></script>
   <script type="text/javascript" src="../js/navigation.js"></script>
   <script type="text/javascript" src="../js/script.js"></script>
 
+  <script>
+    $('input[name="nowid-input"]').on('input', function () {
+      const inputValue = $(this).val().trim();
 
-<script>
+      // Check if input is not empty
+      if (inputValue !== '') {
+        $('button[name="setup-btn"]').removeAttr('disabled');
+      } else {
+        $('button[name="setup-btn"]').attr('disabled', 'disabled');
+      }
+    });
 
-  $('.password-input').on('input', function () {
-    if ($(this).val().trim() !== '') {
-        $('button[name="login-submit"]').removeAttr("disabled");
-    } else {
-        $('button[name="login-submit"]').attr("disabled", "disabled");
+    $('input[name="nowid-input"]').on('keyup', function (event) {
+      const inputValue = $(this).val().trim();
+
+      // Check if Enter key is pressed and the button is not disabled
+      if (event.keyCode === 13 && !$('button[name="setup-btn"]').prop('disabled')) {
+        // Validate if input is a valid email or an 8-digit mobile number
+        if (isValidEmailOrMobile(inputValue)) {
+          window.location = '../ux1/nowe-migration-create-acct-pwd.html';
+        } else {
+          $('.errormsg').show();
+        }
+      }
+    });
+
+    $('button[name="setup-btn"]').on('click', function () {
+      const inputValue = $('input[name="nowid-input"]').val().trim();
+
+      // Validate if input is a valid email or an 8-digit mobile number
+      if (isValidEmailOrMobile(inputValue)) {
+        window.location = '../ux1/nowe-migration-create-acct-pwd.html';
+      } else {
+        $('.errormsg').show();
+      }
+    });
+
+    // Helper function to validate email or 8-digit mobile number
+    function isValidEmailOrMobile(input) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email regex
+      const mobileRegex = /^\d{8}$/; // Matches exactly 8 digits
+      return emailRegex.test(input) || mobileRegex.test(input);
     }
-  });
-
-  $('.password-input').keyup(function(event) {
-    if (event.keyCode === 13 && !$('button[name="login-submit"]').prop('disabled')) {
-      window.location = 'nowe-migration-almost-there.html';
-   }
- });
-
-
-</script>
-
+  </script>
 
   <!-- end of script -->
 </body>
