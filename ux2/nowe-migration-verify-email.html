@@ -78,6 +78,7 @@
             <input class="" type="text" placeholder="" pattern="\d*" inputmode="numeric">
             <input class="" type="text" placeholder="" pattern="\d*" inputmode="numeric">
           </div>
+          <p class="text-16 text-center note Barlow text-grey">(Note: You may enter any random numbers to bypass the OTP verification step.)</p>
           <p class="text-16 errormsg text-center" id="otp-error"> The passcode you entered is incorrect.</p>
         </div>
 
@@ -154,20 +155,7 @@ function checkOTPFields(){
     $('.code-wrapper input').blur()
 
     setTimeout(function(){
-      if (codeValue === '000000') {
-        $('.loading-wrapper').removeClass('show');
-          $('#otp-error').show();
-      }
-      // else if (codeValue === '000000') {
-      //   $('#otp-error').hide();
-      //   window.location.href = 'nowid-assign-password-free.html';
-      // } else {
-      //   $('.loading-wrapper').removeClass('show');
-      //   $('#otp-error').show();
-      // }
-      else {
-        window.location = 'nowe-migration-login.html';
-      }
+      window.location = 'nowe-migration-login.html';
 
     },2000);  
   } 
