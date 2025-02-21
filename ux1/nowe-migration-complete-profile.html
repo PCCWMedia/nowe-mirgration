@@ -170,9 +170,22 @@
     }
 
     $(document).ready(function () {
-
       $('input').on('input', checkInputs);
       $('input[type="checkbox"]').on('change', checkInputs);
+    });
+
+    // Enable OTP button when mobile input has value
+    $('input[name="mobile-no"]').on('input', function() {
+      if ($(this).val().trim() !== '') {
+        $('#getOTP_btn').removeAttr('disabled');
+      } else {
+        $('#getOTP_btn').attr('disabled', 'disabled');
+      }
+    });
+
+    $('#getOTP_btn').click(function() {
+      $('.one-time-passcode-wrapper').fadeIn();
+      $(".one-time-passcode-wrapper input").first().focus();
     });
 
   </script>
