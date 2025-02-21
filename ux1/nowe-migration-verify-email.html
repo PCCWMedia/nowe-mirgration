@@ -65,11 +65,13 @@
 
     <div class="container revisedpadding">
       <div class="nowid_container">
+        <button type="button" class="standardbtn_xl center otp-btn disabled-btn" id="getOTP_btn">Get One-time Passcode</button>
+
         <div class="heading-message">
           <p class="text-18">Please input it below:</p>
         </div>
 
-        <div class="otp-wrapper now_buffer_lg show">
+        <div class="otp-wrapper show">
           <div class="code-wrapper" id="otp-inputs">
             <input class="" type="text" placeholder="" pattern="\d*" inputmode="numeric" autocomplete="one-time-code">
             <input class="" type="text" placeholder="" pattern="\d*" inputmode="numeric">
@@ -82,7 +84,9 @@
           <p class="text-16 errormsg text-center" id="otp-error"> The passcode you entered is incorrect.</p>
         </div>
 
-        <button type="button" class="standardbtn_xl center otp-btn disabled-btn" id="getOTP_btn">Get One-time Passcode</button>
+        <div class="otp-btn-controls">
+          <button type="button" class="standardbtn_xl center show" disabled  id="submit-OTP">Submit</button>
+        </div>
 
       </div>
     </div>
@@ -127,43 +131,6 @@
         $('#getOTP_btn').removeClass('disabled-btn').addClass('standardbtn');
         }
     }, 1000);
-
-
-
-$('.code-wrapper input').on('keyup', function () {
-  checkOTPFields();
-});
-
-
-function checkOTPFields(){
-  var allInputsFilled = true;
-  var codeValue = '';
-
-  // Check if all inputs are filled and concatenate the values
-  $('.code-wrapper input').each(function () {
-    if ($(this).val() === '') {
-      allInputsFilled = false;
-      return false; // Exit the loop early
-    }
-    codeValue += $(this).val();
-    
-  });
-
-  if (allInputsFilled) {
-    $('#submit-OTP').removeAttr("disabled");
-    $('.loading-wrapper').addClass('show');
-    $('.code-wrapper input').blur()
-
-    setTimeout(function(){
-      window.location = 'nowe-migration-create-acct-pwd.html';
-    },2000);  
-  } 
-  else {
-    $('#submit-OTP').attr("disabled", "disabled");
-  }
-}
-
-
 
 
   </script>
