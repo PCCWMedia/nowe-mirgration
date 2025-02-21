@@ -174,5 +174,71 @@ var otpModule = otp("otp-inputs");
 otpModule.init(function(passcode) {});
 
 
+let isValidationInProgress = false;
+
+// Monitor input fields for changes
+$('.code-wrapper input').on('keyup', function () {
+  checkOTPFields();
+});
+
+// Function to check if all OTP fields are filled
+function checkOTPFields() {
+  if (isValidationInProgress) {
+    // If validation is in progress, don't enable the button
+    return;
+  }
+
+  let allInputsFilled = true;
+
+  // Check if all inputs are filled
+  $('.code-wrapper input').each(function () {
+    if ($(this).val() === '') {
+      allInputsFilled = false;
+      return false; // Exit the loop early
+    }
+  });
+
+  if (allInputsFilled) {
+    $('#submit-OTP').removeAttr('disabled');
+  } else {
+    $('#submit-OTP').attr('disabled', 'disabled');
+  }
+}
+
+// Trigger validation when the last input field is filled
+$('.code-wrapper input:last').on('input', function () {
+  if ($(this).val() !== '') {
+    checkOTPValidation();
+  }
+});
+
+// Trigger validation when the submit button is clicked
+$('#submit-OTP').on('click', function () {
+  checkOTPValidation();
+});
+
+// Function for OTP validation
+function checkOTPValidation() {
+  isValidationInProgress = true;
+
+  // Show loading spinner and disable the submit button
+  $('.loading-wrapper').addClass('show');
+  $('#submit-OTP').attr('disabled', 'disabled');
+
+  setTimeout(function () {
+    // // Hide loading spinner and show error message
+    // $('.loading-wrapper').removeClass('show');
+    // $('#otp-error').show();
+
+    // // Re-enable the submit button
+    // $('#submit-OTP').removeAttr('disabled');
+    // isValidationInProgress = false;
+
+    // // Re-run checkOTPFields to ensure button state is correct
+    // checkOTPFields();
+    window.location = 'nowe-migration-create-acct-pwd.html';
+  }, 2000);
+}
+
 
 

@@ -167,34 +167,34 @@ $('#confirm-plans-btn').click(function () {
 
 
 // verify OTP
-$('input[name="mobile-no"]').on('input', function () {
-  if ($(this).val().trim() !== '') {
-      $('#getOTP_btn').removeAttr("disabled");
-  } else {
-      $('#getOTP_btn').attr("disabled", "disabled");
-  }
-});
+// $('input[name="mobile-no"]').on('input', function () {
+//   if ($(this).val().trim() !== '') {
+//       $('#getOTP_btn').removeAttr("disabled");
+//   } else {
+//       $('#getOTP_btn').attr("disabled", "disabled");
+//   }
+// });
 
-var timer; // Declare timer variable outside the click function
+// var timer; // Declare timer variable outside the click function
 
-$('#getOTP_btn').click(function () {
+// $('#getOTP_btn').click(function () {
 
-    $(this).addClass('disabled-btn');
-    var count = 120;
-    var countdownSpan = $(this);
-    countdownSpan.text('Sent. Expires in ' + count + ' seconds...');
-    // countdownSpan.text('短訊已發送並將於' + count + '秒後逾時失效...');
+//     $(this).addClass('disabled-btn');
+//     var count = 120;
+//     var countdownSpan = $(this);
+//     countdownSpan.text('Sent. Expires in ' + count + ' seconds...');
+//     // countdownSpan.text('短訊已發送並將於' + count + '秒後逾時失效...');
 
-    $('.one-time-passcode-wrapper').fadeIn();
-    timer = setInterval(function () {
-        count--;
-        countdownSpan.text('Sent. Expires in ' + count + ' seconds...');
-        // countdownSpan.text('短訊已發送並將於' + count + '秒後逾時失效...');
+//     $('.one-time-passcode-wrapper').fadeIn();
+//     timer = setInterval(function () {
+//         count--;
+//         countdownSpan.text('Sent. Expires in ' + count + ' seconds...');
+//         // countdownSpan.text('短訊已發送並將於' + count + '秒後逾時失效...');
 
-        if (count < 0) {
-            clearInterval(timer);
-            countdownSpan.text('Resend One-Time Passcode');
-            $('#getOTP_btn').removeClass('disabled-btn');
-        }
-    }, 1000);
-});
+//         if (count < 0) {
+//             clearInterval(timer);
+//             countdownSpan.text('Resend One-Time Passcode');
+//             $('#getOTP_btn').removeClass('disabled-btn');
+//         }
+//     }, 1000);
+// });
