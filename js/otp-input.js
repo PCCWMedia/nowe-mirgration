@@ -236,7 +236,11 @@ function checkOTPValidation() {
 
     // // Re-run checkOTPFields to ensure button state is correct
     // checkOTPFields();
-    window.location = 'nowe-migration-create-acct-pwd.html';
+    if (window.location.pathname.includes('/ux1/')) {
+      window.location = 'nowe-migration-create-acct-pwd.html';
+    } else if (window.location.pathname.includes('/ux2/')) {
+      window.location = 'nowe-migration-login.html';
+    }
   }, 2000);
 }
 
