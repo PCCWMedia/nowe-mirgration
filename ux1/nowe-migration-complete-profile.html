@@ -58,9 +58,9 @@
 
     <div class="progressbar-wrapper">
       <ul class="progressbar clearfix">
-        <li class=" text-16">Create Account</li>
-        <li class="active text-16">Get Your Details</li>
-        <li class="text-16">Complete Migration</li>
+        <li class="text-16">Create Account</li>
+        <li class="active text-16">Confirm Your Details</li>
+        <li class="text-16">Complete Upgrade</li>
       </ul>
     </div>
 
@@ -73,7 +73,7 @@
     <div class="data-box">
       <h3 class="text-18">Your Login (Now ID):</h3>
       <b class="text-20">useremail@email.com</b>
-      <p class="text-18 secondary-color">Use this to login into all platforms.<br>This is also your contact Email.</p>
+      <p class="text-18 secondary-color">Use Now ID to login into all Now TV platforms.<br>This is also your contact email.</p>
     </div>
 
 
@@ -108,7 +108,7 @@
             </div>
 
             <div class="OTP-button-wrap">
-              <button type="button" name="" class="mb-30 default-btn full" disabled  id="getOTP_btn">Get One-Time Pass Code </button>
+              <button type="button" name="" class="mb-30 default-btn full" disabled  id="getOTP_btn">To Receive a One-Time Passcode</button>
             </div>
 
             <div class="group now_buffer_lg one-time-passcode-wrapper">
@@ -128,12 +128,12 @@
                 <label class="text-16">
                   <input type="checkbox" class="option-input radio" name="example" />
                 </label>
-                <p class="terms text-16 secondary-color">I object to the proposed use and/ or disclosure of my Data for direct marketing as stated in the Personal Information Collection Statement by Now TV Limited, Club HKT Limited and HKT CSP Limited (Note: if you have not registered as a member of the Club or a user of My HKT before subscripting to the Service(s))</p>
+                <p class="terms text-16 secondary-color">I consent to the proposed use and/ or disclosure of my Data for direct marketing as stated in the Personal Information Collection Statement  by Now TV Limited and HKT CSP Limited (Note: if you have not registered as a member of the Club or a user of My HKT before subscripting to the Service(s))</p>
               </div>
 
             <br>
             <div class="page_option">
-              <button type="button" name="" class="mb-30 standardbtn_lg" disabled  id="continue-btn"  onclick="location.href='nowe-migration-almost-there.html'">Continue</button>
+              <button type="button" name="" class="mb-30 standardbtn_lg" disabled  id="continue-btn"  onclick="location.href='nowe-migration-almost-there.html'">Agree and Continue</button>
             </div>
 
           </form>
@@ -183,10 +183,32 @@
       }
     });
 
-    $('#getOTP_btn').click(function() {
+
+    var timer; // Declare timer variable outside the click function
+
+  $('#getOTP_btn').click(function () {
+
+      $(this).addClass('disabled-btn');
+      var count = 120;
+      var countdownSpan = $(this);
+      countdownSpan.text('Sent. Expires in ' + count + ' seconds...');
+      // countdownSpan.text('短訊已發送並將於' + count + '秒後逾時失效...');
+
       $('.one-time-passcode-wrapper').fadeIn();
       $(".one-time-passcode-wrapper input").first().focus();
-    });
+      timer = setInterval(function () {
+          count--;
+          countdownSpan.text('Sent. Expires in ' + count + ' seconds...');
+          // countdownSpan.text('短訊已發送並將於' + count + '秒後逾時失效...');
+
+          if (count < 0) {
+              clearInterval(timer);
+              countdownSpan.text('Resend One-Time Passcode');
+              $('#getOTP_btn').removeClass('disabled-btn');
+          }
+      }, 1000);
+  });
+
 
   </script>
   <!-- end of script -->
