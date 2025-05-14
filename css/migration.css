@@ -216,6 +216,9 @@ header img {
   text-align: center;
   align-items: center;
   padding: 48px 30px 30px 48px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
 }
 .nowe-information-wrapper.withbg::before {
   content: "";
@@ -278,6 +281,10 @@ header img {
   font-size: 18px;
   font-family: "Barlow", "Noto Sans TC", sans-serif;
   text-wrap: pretty;
+}
+.nowe-information-wrapper p.remarks {
+  margin-top: 24px;
+  font-size: 16px;
 }
 .nowe-information-wrapper .cta-button {
   display: flex;
@@ -771,6 +778,10 @@ input:focus {
     text-align: left;
     font-size: 16px;
     width: 100%;
+  }
+  .nowe-information-wrapper p.remarks {
+    margin-top: 16px;
+    font-size: 14px;
   }
   .nowe-information-wrapper .cta-button {
     row-gap: 50px;

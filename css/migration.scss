@@ -243,6 +243,9 @@ header{
     text-align: center;
     align-items: center;
     padding: 48px 30px 30px 48px;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
 
     &.withbg::before{
         content: '';
@@ -305,6 +308,11 @@ header{
         font-size: 18px;
         font-family: $barlow;
         text-wrap: pretty;
+
+        &.remarks{
+            margin-top: 24px;
+            font-size: 16px;
+        }
     }
     .cta-button{
         display: flex;
@@ -352,6 +360,8 @@ header{
             img{margin: 0 5px 0 0;}
         }
     }
+
+    
 }
 
 
@@ -732,6 +742,10 @@ form {
             text-align: left;
             font-size: 16px;
             width: 100%;
+            &.remarks{
+                margin-top: 16px;
+                font-size: 14px;
+            }
         }
         .cta-button{
             row-gap: 50px;
